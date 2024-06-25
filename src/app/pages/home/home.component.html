@@ -1,0 +1,16 @@
+<div class="flex flex-col gap-4">
+  <div class="flex">
+    <app-title-filter
+      (titleChange)="filterByTitle($event)"
+    />
+    <app-category-filter
+      (categoriesChange)="filterByCategory($event)"
+    />
+    <app-author-filter
+      (authorsChange)="filterByAuthor($event)"
+    />
+  </div>
+  <app-books-list
+    [books]="filteredBooks"
+  />
+</div>

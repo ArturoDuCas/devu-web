@@ -1,0 +1,34 @@
+<h2
+  class="text-2xl font-semibold text-gray-800 mb-4"
+>Registrar venta</h2>
+<form [formGroup]="sellForm" (ngSubmit)="onSubmit()" class="w-full flex justify-center">
+  <div class="flex flex-col gap-2">
+    <!--  libro  -->
+    <div class="flex flex-col gap-1">
+      <label for="book">Libro</label>
+      <p-dropdown
+        id="book"
+        formControlName="book"
+        [options]="books"
+        optionLabel="title"
+        placeholder="Seleccione un libro"
+        appendTo="body"
+        class="w-full"
+      />
+    </div>
+    <!--  cantidad  -->
+    <div class="flex flex-col gap-1">
+      <label for="quantity">Cantidad</label>
+      <p-inputNumber
+        id="quantity"
+        formControlName="quantity"
+        placeholder="Cantidad"
+        [showButtons]="true"
+        [min]="0"
+        [max]="100"
+      />
+
+    </div>
+    <p-button type="submit" label="Registrar"/>
+  </div>
+</form>

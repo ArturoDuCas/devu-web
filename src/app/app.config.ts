@@ -4,7 +4,7 @@ import {USE_EMULATOR as USE_AUTH_EMULATOR} from '@angular/fire/compat/auth';
 import {USE_EMULATOR as USE_FIRESTORE_EMULATOR} from '@angular/fire/compat/firestore';
 import {USE_EMULATOR as USE_FUNCTIONS_EMULATOR} from '@angular/fire/compat/functions';
 import {routes} from './app.routes';
-import {PrimeNGConfig} from "primeng/api";
+import {ConfirmationService, MessageService, PrimeNGConfig} from "primeng/api";
 import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
 import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
@@ -12,12 +12,16 @@ import {getFunctions, provideFunctions} from '@angular/fire/functions';
 import {getStorage, provideStorage} from '@angular/fire/storage';
 import {environment} from "../environments/environment";
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
+import { provideAnimations } from "@angular/platform-browser/animations";
 
 export const appConfig: ApplicationConfig = {
   providers:
     [
       provideZoneChangeDetection({eventCoalescing: true}),
       provideRouter(routes),
+      provideAnimations(),
+      MessageService,
+      ConfirmationService,
       {
         provide: PrimeNGConfig,
         useFactory: () => {
@@ -31,6 +35,7 @@ export const appConfig: ApplicationConfig = {
       provideFirestore(() => getFirestore()),
       provideFunctions(() => getFunctions()),
       provideStorage(() => getStorage()),
+
 
       // for emulators
       {provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['http://localhost', 9099] : undefined},

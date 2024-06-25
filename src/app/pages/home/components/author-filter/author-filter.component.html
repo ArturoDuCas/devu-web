@@ -1,0 +1,7 @@
+<p-multiSelect
+  [options]="authors"
+  [(ngModel)]="selectedAuthors"
+  optionLabel="name"
+  placeholder="Find authors"
+  (onChange)="sendOutput()"
+/>

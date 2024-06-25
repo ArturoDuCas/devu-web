@@ -1,0 +1,7 @@
+<p-multiSelect
+  [options]="categories"
+  [(ngModel)]="selectedCategories"
+  optionLabel="name"
+  placeholder="Find categories"
+  (onChange)="sendOutput()"
+/>
