@@ -1,0 +1,35 @@
+@startuml
+!define RECTANGLE class
+
+RECTANGLE Author {
+  +id: string
+  +name: string
+}
+
+RECTANGLE Category {
+  +id: string
+  +name: string
+}
+
+RECTANGLE Book {
+  +id: string
+  +title: string
+  +publication_date: string
+  +price: number
+  +available: number
+  +author: Author
+  +category: Category
+}
+
+RECTANGLE Sells {
+  +id: string
+  +book: Book
+  +quantity: number
+  +sell_date: string
+}
+
+Book --> Author : references
+Book --> Category : references
+Sells --> Book : contains
+
+@enduml
