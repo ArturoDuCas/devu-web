@@ -26,6 +26,7 @@ RECTANGLE Sells {
   +book: Book
   +quantity: number
   +sell_date: string
+  +total_price: number
 }
 
 Book --> Author : references
